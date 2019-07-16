@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<html>
+  <body>
+    <h1>Database</h1>
+    {% for user in saved_users %}
+  <p>{{user.first_name}}</p>
+      <form method="POST" action="/updating-user">
+    <input type="hidden" value="{{user.first_name}}" name="oldname">
+    <input type="text" value="{{user.first_name}}" name="newname">
+    <input type="submit" value="Update">
+  </form>
+        <p>{{'Age:'}}</p>
+        <form method="POST" action="/updating-user">
+    <input type="hidden" value="{{user.age}}" name="oldage">
+    <input type="text" value="{{user.age}}" name="newage">
+    <input type="submit" value="Update">
+  </form>
+    {% endfor %}
+  </body>
+</html>
+{% endblock %}
